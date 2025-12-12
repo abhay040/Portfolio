@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Abhay Solanki Rajput </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="description" content="Portfolio of Abhay Solanki Rajput — Artificial Intelligence and Data Science student" />
+
+  <!-- Fonts (system-stack fallback) -->
+  <style>
+    :root{
+      --bg: #f7fdfa;
+      --card: #ffffff;
+      --text: #05343a;
+      --muted: #6b7576;
+      --accent: #0fb3a6; /* teal */
+      --accent-2: #0aa095;
+      --glass: rgba(11,179,166,0.08);
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(6,34,36,0.08);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg),#eaf7f6);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      scroll-behavior:smooth;
+    }
+
+    /* Header / Nav */
+    .nav{
+      position:sticky; top:12px; z-index:40;
+      width:calc(100% - 48px);
+      margin:0 24px;
+      display:flex; align-items:center; justify-content:space-between;
+      backdrop-filter: blur(6px);
+    }
+    .nav-inner{
+      display:flex; gap:12px; align-items:center;
+      width:100%; max-width:1100px; margin:0 auto;
+    }
+    .brand{
+      display:flex; gap:10px; align-items:center;
+      padding:8px 12px;
+      border-radius:12px;
+      background: linear-gradient(90deg, rgba(15,179,166,0.12), rgba(10,160,149,0.06));
+      box-shadow: var(--shadow);
+    }
+    .brand h4{margin:0;font-size:16px}
+    .nav-links{display:flex; gap:12px; align-items:center; margin-left:auto}
+    .nav-links a{color:var(--text); text-decoration:none; padding:8px 10px; border-radius:10px; font-weight:600}
+    .nav-links a:hover{background:var(--glass)}
+
+    /* Layout container */
+    .container{max-width:1100px;margin:36px auto;padding:24px;}
+
+    /* Hero */
+    .hero{
+      display:flex; gap:28px; align-items:center;
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+    .hero-left{flex:1}
+    .hero-right{
+      width:280px; height:280px; border-radius:16px;
+      background: linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex; align-items:center; justify-content:center;
+      color:white; font-weight:700; font-size:18px;
+      box-shadow: 0 10px 30px rgba(10,160,149,0.18);
+      transform: translateY(0);
+      transition:transform .4s cubic-bezier(.2,.9,.2,1);
+    }
+    .hero-right:hover{transform:translateY(-8px) rotate(-1deg)}
+    .name{font-size:28px; margin:0 0 6px}
+    .title{margin:0;color:var(--muted); font-weight:600}
+    .lead{margin-top:14px;color:#235353}
+
+    .cta-row{display:flex; gap:12px; margin-top:18px}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border-radius:12px; text-decoration:none;
+      font-weight:700; cursor:pointer; border:none;
+    }
+    .btn-primary{background:var(--accent); color:white; box-shadow:0 8px 20px rgba(15,179,166,0.16)}
+    .btn-outline{background:transparent; border:2px solid rgba(5,52,58,0.06); color:var(--text)}
+
+    /* Sections */
+    section{margin-top:28px}
+    .section-title{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+    .section-title h3{margin:0}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap:16px;
+    }
+
+    /* About card */
+    .card{background:var(--card); padding:18px; border-radius:12px; box-shadow:var(--shadow)}
+    .profile-meta{display:flex; gap:14px; align-items:center}
+    .avatar{
+      width:84px;height:84px;border-radius:12px;background:linear-gradient(180deg, #ffffff33, transparent);
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);
+      border:2px solid rgba(11,179,166,0.08);
+    }
+
+    /* Projects */
+    .project-card{padding:16px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfffe);box-shadow:0 10px 30px rgba(6,34,36,0.04);transition:transform .28s}
+    .project-card:hover{transform:translateY(-8px)}
+    .project-img{height:140px;border-radius:10px;background:linear-gradient(180deg, #e8f8f6, #ffffff);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700}
+    .project-meta{margin-top:12px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .tag{padding:6px 8px;border-radius:8px;background:var(--glass);font-weight:600;font-size:13px}
+
+    /* Skills */
+    .skill{
+      margin-bottom:10px;
+    }
+    .skill .label{display:flex;justify-content:space-between;font-weight:700;margin-bottom:6px}
+    .bar{
+      height:12px;border-radius:999px;background:rgba(5,52,58,0.06);overflow:hidden;
+    }
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0; border-radius:999px; transition:width 900ms cubic-bezier(.2,.9,.2,1);}
+  
+    .cert-img {
+      width: 100%;
+      height: 180px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .cert-card {
+      cursor: pointer;
+      transition: transform .25s ease;
+    }
+
+    .cert-card:hover {
+      transform: scale(1.04);
+    }
+
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns: 360px;gap:18px}
+    @media (max-width:900px){ .contact-grid{grid-template-columns:1fr} .hero{flex-direction:column; align-items:stretch} .hero-right{width:100%; height:180px} .nav{width:calc(100% - 20px); margin:10px} }
+
+    /* Footer */
+    footer{margin-top:36px;text-align:center;color:var(--muted);padding:20px}
+
+    /* Modal */
+    .modal{
+      position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+      background:rgba(3,18,18,0.5); z-index:999;
+    }
+    .modal.active{display:flex}
+    .modal-card{width:calc(100% - 40px); max-width:760px; background:var(--card); padding:22px; border-radius:12px; box-shadow:var(--shadow)}
+    .close{background:transparent;border:none;font-size:22px;cursor:pointer;color:var(--muted)}
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    a.social{display:inline-flex;align-items:center; gap:8px; text-decoration:none; color:var(--text); padding:8px}
+
+
+
+    .social-links {
+      margin-top: 10px;
+      display: flex;
+      gap: 25px;
+    }
+
+    .social-links a {
+      font-size: var(--accent);
+      color: rgb(47, 46, 46);
+      transition: 0.5s ease;
+    }
+
+    .social-links a:hover {
+      color: #00695c;
+      transform: scale(1.2);
+    }
+
+
+
+
+
+    /* ---- THEME TOGGLE ICON ---- */
+.theme-toggle {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 22px;
+    color: #009688;
+    z-index: 1000;
+    transition: 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.2);
+}
+
+/* ---- LIGHT THEME (default) ---- */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #222;
+    --card-color: #f5f5f5;
+}
+
+/* ---- DARK THEME ---- */
+.dark-theme {
+    --bg-color: #0d0d0d;
+    --text-color: #eaeaea;
+    --card-color: #1b1b1b;
+}
+
+/* ---- APPLY THEME COLORS ---- */
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: 0.3s ease;
+}
+
+section, .card, .about, .navbar {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.card, .about {
+    background: var(--card-color);
+}
+
+
+
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="border-radius:8px">
+          <rect width="24" height="24" rx="6" fill="white" />
+          <path d="M6 12c0-3.314 2.686-6 6-6v12c-3.314 0-6-2.686-6-6z" fill="url(#g)"></path>
+          <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0fb3a6"/><stop offset="1" stop-color="#0aa095"/></linearGradient></defs>
+        </svg>
+        <div>
+          <h4>Abhay Solanki</h4>
+          <div style="font-size:12px;color:var(--muted)"></div>
+        </div>
+      </div>
+ <div class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+</div>
+      <nav class="nav-links" role="navigation" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact">Contact</a>
+        <a href="#resume" class="btn btn-outline">Resume</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-left">
+        <h1 class="name" id="hero-heading">Abhay Solanki Rajput</h1>
+        <div class="title">Artificial Intelligence and Data Science student</div>
+        <p class="lead">
+          I'm a Computer Science student specializing in AI & Data Science. I build computer vision & deep learning projects — from dataset preprocessing to model training and deployment.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects" aria-label="See projects">View Projects →</a>
+          <a class="btn btn-outline" href="abhaysolanki040@gmail.com">Contact Me</a>
+        </div>
+
+        <div style="margin-top:18px; display:flex; gap:12px; align-items:center">
+          <!-- Socials - replace hrefs -->
+          <div class="social-links">
+          <a class="social" href="https://github.com/abhay040" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.28 3.438 9.75 8.207 11.33.6.11.82-.26.82-.58 0-.29-.01-1.05-.015-2.06-3.338.725-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.833 2.807 1.304 3.49.997.108-.775.418-1.305.76-1.605-2.665-.305-5.466-1.333-5.466-5.93 0-1.31.468-2.382 1.236-3.222-.124-.305-.536-1.53.117-3.19 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 0 1 3.003-.404c1.02.004 2.046.138 3.003.404 2.29-1.552 3.297-1.23 3.297-1.23.655 1.66.243 2.885.12 3.19.77.84 1.234 1.912 1.234 3.222 0 4.61-2.806 5.62-5.48 5.92.43.37.81 1.102.81 2.222 0 1.606-.015 2.898-.015 3.292 0 .32.216.695.825.577C20.565 22.246 24 17.78 24 12.5 24 5.87 18.63.5 12 .5z" fill="currentColor"/></svg>
+            GitHub
+          </a>
+          <a class="social" href="https://www.linkedin.com/in/abhay-solanki-rajput-29b02825a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11.001 0zM3 8.98h4v12H3zM8.98 8.98h3.64v1.64h.05c.51-.97 1.76-2 3.63-2 3.88 0 4.59 2.56 4.59 5.88v6.5h-4v-5.77c0-1.38-.03-3.16-1.92-3.16-1.92 0-2.22 1.5-2.22 3.05v5.88h-4z" fill="currentColor"/></svg>
+            LinkedIn
+          </a>
+          
+            <a href="https://www.facebook.com/share/17uJZaoY1x/" target="_blank"><i class="fab fa-facebook"></i>facebook</a>
+            <a href="https://instagram.com/abhay04._" target="_blank"><i class="fab fa-instagram"></i>instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right" role="img" aria-label="Profile photo">
+        <div style="text-align:center; padding:16px;">
+          <img src="abhay solanki rajput.jpg"
+             alt="Abhay Solanki Rajput"
+             style="
+                width:120px;
+                height:120px;
+                border-radius:50%;
+                object-fit:cover;
+                border:3px solid #009688;
+             ">
+        <div style="font-size:13px; margin-top:8px; opacity:.95;">
+            ABHAY RAJPUT
+        </div>
+    </div>
+</div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-h">
+      <div class="section-title"><h3 id="about-h">About</h3><div class="muted">Who I am</div></div>
+      <div class="card">
+        <div class="profile-meta">
+          <div class="avatar">AS</div>
+          <div>
+            <p style="margin:0 0 8px"><strong>Abhay Solanki Rajput</strong> — Artificial Intelligence and Data Science student focused on computer vision and deep learning. I enjoy building models that solve real-world problems, like sign-language interpretation and weed detection systems for agriculture.</p>
+            <div class="muted" style="font-size:14px">College: B.Tech in Computer Science Engineering — Specialization: AI & Data Science</div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap">
+          <div class="card" style="padding:12px;min-width:180px;flex:1">
+            <strong>Experience</strong>
+            <div class="muted" style="font-size:13px">Student Projects, Research, Internships</div>
+          </div>
+          <div class="card" style="padding:12px;min-width:180px;flex:1">
+            <strong>Interests</strong>
+            <div class="muted" style="font-size:13px">Computer Vision, DL, Model Deployment, Django</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-labelledby="projects-h">
+      <div class="section-title"><h3 id="projects-h">Projects</h3><div class="muted">Selected work</div></div>
+
+      <div class="grid">
+        <!-- Project 1 -->
+        <div class="project-card card">
+          <div class="project-img">Sign Language → Text</div>
+          <div class="project-meta">
+            <h4 style="margin:6px 0">Real-time Sign & Lip Movement Recognition</h4>
+            <p class="muted" style="margin:4px 0">Preprocessing + DL model that converts hand & lip motion to text.</p>
+            <div class="tags">
+              <div class="tag">Python</div>
+              <div class="tag">OpenCV</div>
+              <div class="tag">TensorFlow</div>
+            </div>
+            <div style="margin-top:12px; display:flex; gap:8px">
+              <button class="btn btn-primary" onclick="openModal(1)">View</button>
+              <a class="btn btn-outline" href="https://github.com/abhay040" target="_blank">Code</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card card">
+          <div class="project-img">Student Mental Health Prediction</div>
+          <div class="project-meta">
+            <h4 style="margin:6px 0">Student Mental Health Prediction</h4>
+            <p class="muted" style="margin:4px 0">Student Mental Health Prediction; for checking Student Mental Health.</p>
+            <div class="tags">
+              <div class="tag">CNN</div>
+              <div class="tag">PyTorch</div>
+              <div class="tag">Flask</div>
+            </div>
+            <div style="margin-top:12px; display:flex; gap:8px">
+              <button class="btn btn-primary" onclick="openModal(2)">View</button>
+              <a class="btn btn-outline" href="https://github.com/abhay040/student-mental-health-prediction" target="_blank">Code</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 (placeholder) -->
+        <div class="project-card card">
+          <div class="project-img">Helmet Detection</div>
+          <div class="project-meta">
+            <h4 style="margin:6px 0">Helmet Detection</h4>
+            <p class="muted" style="margin:4px 0">Helmet Detection :- Detect the wearing the Helmet.</p>
+            <div class="tags">
+              <div class="tag">ML</div>
+              <div class="tag">CNN</div>
+              <div class="tag">Python</div>
+              <div class="tag">OpenCV</div>
+              <div class="tag">TensorFlow</div>
+            </div>
+            <div style="margin-top:12px; display:flex; gap:8px">
+              <button class="btn btn-primary" onclick="openModal(3)">View</button>
+              <a class="btn btn-outline" href="https://github.com/abhay040/helmet-detection" target="_blank">Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" aria-labelledby="skills-h">
+      <div class="section-title"><h3 id="skills-h">Skills</h3><div class="muted">Tools & technologies</div></div>
+
+      <div class="grid">
+        <div class="card">
+          <h4>Technical</h4>
+          <div style="margin-top:12px">
+            <div class="skill"><div class="label"><span>Python</span><span>95%</span></div><div class="bar"><i data-w="95%"></i></div></div>
+            <div class="skill"><div class="label"><span>Deep Learning (CNN/RNN)</span><span>72%</span></div><div class="bar"><i data-w="72%"></i></div></div>
+            <div class="skill"><div class="label"><span>Computer Vision</span><span>80%</span></div><div class="bar"><i data-w="80%"></i></div></div>
+            <div class="skill"><div class="label"><span>Django / Flask</span><span>90%</span></div><div class="bar"><i data-w="90%"></i></div></div>
+            <div class="skill"><div class="label"><span>HTML / CSS / JS</span><span>95%</span></div><div class="bar"><i data-w="95%"></i></div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4>Workflows</h4>
+          <div style="margin-top:12px">
+            <div style="display:flex; gap:10px; flex-wrap:wrap">
+              <div style="min-width:120px; padding:10px; border-radius:10px; background:var(--glass)"><strong>VS Code / Google Colab / Jupiter Notebook</code></strong><div class="muted" style="font-size:13px">Plat Form</Form></div></div>
+              <div style="min-width:120px; padding:10px; border-radius:10px; background:var(--glass)"><strong>Machine Learning / Deep Learning</strong><div class="muted" style="font-size:13px">Model training</div></div>
+              <div style="min-width:120px; padding:10px; border-radius:10px; background:var(--glass)"><strong>Django / Flask</strong><div class="muted" style="font-size:13px">Framework</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CERTIFICATES -->
+     <section id="certificates" aria-labelledby="cert-h">
+      <div class="section-title">
+        <h3 id="cert-h">Certificates</h3>
+        <div class="muted">My Achievements</div>
+      </div>
+      <div class="grid">
+    <!-- Certificate 1 -->
+    <div class="card cert-card" onclick="openCert('cert1.jpg')">
+      <img src="img1.jpg" alt="Certificate 1" class="cert-img" />
+      <p style="text-align:center;margin-top:10px;font-weight:600">Python Demonstrations For Practice Course</p>
+    </div>
+
+    <!-- Certificate 2 -->
+    <div class="card cert-card" onclick="openCert('cert2.jpg')">
+      <img src="img12.jpg" alt="Certificate 2" class="cert-img" />
+      <p style="text-align:center;margin-top:10px;font-weight:600">Nirmaan 2024</p>
+    </div>
+
+   
+
+  
+
+    <!-- Certificate 5 -->
+    <div class="card cert-card" onclick="openCert('cert3.jpg')">
+      <img src="img7.jpg" alt="Certificate 3" class="cert-img" />
+      <p style="text-align:center;margin-top:10px;font-weight:600">Introduction TO Deep Learning</p>
+    </div>
+     </div>
+    </section>
+
+
+    <!-- Resume + Contact -->
+    <section id="resume" aria-labelledby="resume-h">
+      <div class="grid">
+        <div class="card">
+          <div class="section-title"><h3 id="resume-h">Resume</h3><div class="muted">Download</div></div>
+          <p>Click below to download my resume <code></code>.</p>
+          <a class="btn btn-primary" href="Abhay resume 09.pdf" download>Download Resume (PDF)</a>
+        </div>
+
+        <div id="contact" class="card">
+          <div class="section-title"><h3>Contact</h3><div class="muted">Get in touch</div></div>
+
+          <div class="contact-grid">
+            <div>
+              <p style="margin-top:0">Want to collaborate or see demos? Send a message — I usually reply within a few days.</p>
+              <form id="contact-form" onsubmit="handleSubmit(event)">
+                <div style="display:flex;gap:8px" aria-required="true">
+                  <input required name="name" placeholder="Your name" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6f4f2" />
+                  <input required name="email" type="email" placeholder="Your email" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6f4f2" />
+                </div>
+                <textarea required name="message" placeholder="Your message" rows="5" style="width:100%;margin-top:10px;padding:10px;border-radius:8px;border:1px solid #e6f4f2"></textarea>
+                <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+                  <button class="btn btn-primary" type="submit">Send Message</button>
+                  <div class="muted" style="font-size:13px">Or email me: <a href="abhaysolanki040@gmail.com">abhaysolanki040@gmail.com</a></div>
+                </div>
+                <div id="form-feedback" style="margin-top:8px;color:var(--muted);font-size:13px"></div>
+              </form>
+            </div>
+
+    <div style="background:linear-gradient(180deg,#f7fffd,#ffffff);padding:12px;border-radius:10px;align-self:start">
+        <h4 style="margin-top:0">Contact Info</h4>
+        <p class="muted" style="margin-bottom:4px">Email</p><div style="margin-bottom:10px"><a href="abhaysolanki040@gmail.com">abhaysolanki040@gmail.com</a></div>
+        <p class="muted" style="margin-bottom:4px">Location</p><div style="margin-bottom:10px">Bhopal ,Madhya Pradesh, India</div>
+        <p class="muted" style="margin-bottom:4px">Available</p><div>Open to internships & collaboration</div>
+        <p class="muted" style="margin-bottom:4px">Contact No.</p><div>8878189778</div>
+    </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Abhay Solanki Rajput · Built with ❤️ · <span class="muted">AI & Data Science</span>
+    </footer>
+  </main>
+  <!-- CERTIFICATE MODAL -->
+   <div id="certModal" class="modal">
+    <div class="modal-card">
+    <button class="close" onclick="closeCert()">×</button>
+    <img id="certModalImg" src="" style="width:100%; border-radius:12px" />
+    </div>
+   </div>
+
+
+  <!-- MODAL -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card" role="document">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3 id="modal-title">Project</h3>
+        <button class="close" onclick="closeModal()" aria-label="Close modal">✕</button>
+      </div>
+      <div id="modal-body" style="margin-top:12px">
+        <p class="muted">Project details will appear here.</p>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+        <a id="modal-code" class="btn btn-outline" href="#" target="_blank">Code</a>
+        <a id="modal-demo" class="btn btn-primary" href="#" target="_blank">Live / Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Basic JS for interactions
+    document.getElementById('year').innerText = new Date().getFullYear();
+
+    // Animate skill bars when visible
+    const bars = document.querySelectorAll('.bar > i');
+    function animateBars(){
+      bars.forEach(b => {
+        const w = b.getAttribute('data-w') || '80%';
+        b.style.width = w;
+      });
+    }
+    // Trigger when skills section is in view
+    const skillsSection = document.getElementById('skills');
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ animateBars(); obs.disconnect(); }
+      });
+    }, {threshold:0.25});
+    if(skillsSection) obs.observe(skillsSection);
+
+    // Modal content examples (customize)
+    const projectData = {
+      1: {
+        title: 'Real-time Sign & Lip Movement Recognition',
+        body: `<p><strong>Description:</strong> A computer-vision pipeline that captures hand and lip motion from live video, preprocesses data, and uses a deep-learning model to convert motions into text in real-time.</p>
+               <p><strong>Stack:</strong> Python, OpenCV, TensorFlow, MediaPipe, Flask (demo)</p>
+               <p><strong>Highlights:</strong> Real-time inference, custom preprocessing, accuracy improvements by temporal smoothing.</p>`,
+        code: 'https://github.com/abhay040',
+        demo: 'https://github.com/abhay040'
+      },
+      2: {
+        title: 'Student Mental Health Prediction',
+        body: `<p><strong>Description:</strong> Developed a machine learning model to predict Student mental health based on questions and answers such as smart– phone time ,Sleep schedule, mental health etc..</p>
+               <p><strong>Stack:</strong> PyTorch, Albumentations, Flask/Docker , CNN , </p>
+               <p><strong>Highlights:</strong> Data augmentation, class-balanced sampling, 98% accuracy on held-out set.</p>`,
+        code: 'https://github.com/abhay040/student-mental-health-prediction.git',
+        demo: 'https://github.com/abhay040/student-mental-health-prediction.git'
+      },
+      3:{
+        title: 'Helmet Detection',
+        body: `<p>To develop an intelligent helmet detection system using deep learning techniques that can automatically detect whether a rider iswearing a helmet or not in real-time from images or video streams. The system aims to promote road safety and assist trafficenforcement through automation.</p>`,
+        code: 'https://github.com/abhay040/helmet-detection.git',
+        demo: 'https://github.com/abhay040/helmet-detection.git'
+      }
+    };
+
+    function openModal(id){
+      const m = document.getElementById('modal');
+      const data = projectData[id] || projectData[3];
+      document.getElementById('modal-title').innerText = data.title;
+      document.getElementById('modal-body').innerHTML = data.body;
+      document.getElementById('modal-code').href = data.code;
+      document.getElementById('modal-demo').href = data.demo;
+      m.classList.add('active'); m.setAttribute('aria-hidden','false');
+    }
+    function closeModal(){
+      const m = document.getElementById('modal');
+      m.classList.remove('active'); m.setAttribute('aria-hidden','true');
+    }
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+    // Contact form: fallback to mailto if no Formspree configured
+    function handleSubmit(e){
+      e.preventDefault();
+      const form = e.target;
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      const feedback = document.getElementById('form-feedback');
+
+      // If you want to use Formspree:
+      // 1) Sign up at https://formspree.io/ and get your endpoint like https://formspree.io/f/xxxxx
+      // 2) Replace below 'useFormspree' false -> true and set 'formspreeUrl'
+      const useFormspree = false;
+      const formspreeUrl = 'https://formspree.io/f/yourid';
+
+      if(useFormspree){
+        fetch(formspreeUrl, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({name, email, message})
+        }).then(r=>{
+          if(r.ok){ feedback.innerText = 'Message sent — thank you!'; form.reset(); }
+          else { feedback.innerText = 'There was a problem sending your message.'; }
+        }).catch(_=> feedback.innerText = 'Network error. Try emailing directly.');
+      } else {
+        // Mailto fallback
+        const subject = encodeURIComponent('Portfolio message from ' + name);
+        const body = encodeURIComponent('Name: ' + name + '\\nEmail: ' + email + '\\n\\n' + message);
+        window.location.href = 'mailto:your.email@example.com?subject=' + subject + '&body=' + body;
+        feedback.innerText = 'Opening your email client...';
+      }
+    }
+    function openCert(src) {
+    document.getElementById("certModalImg").src = src;
+    document.getElementById("certModal").classList.add("active");
+    }
+    
+    function closeCert() {
+    document.getElementById("certModal").classList.remove("active");
+    }
+
+
+
+
+
+  
+    const toggle = document.getElementById("themeToggle");
+    const icon = toggle.querySelector("i");
+
+    toggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-theme");
+
+        if (document.body.classList.contains("dark-theme")) {
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+        } else {
+            icon.classList.remove("fa-sun");
+            icon.classList.add("fa-moon");
+        }
+    });
+
+
+
+  </script>
+</body>
+</html>
